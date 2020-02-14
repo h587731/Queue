@@ -1,6 +1,6 @@
 package no.hvl.dat102.klient;
 
-import no.hvl.dat102.EmptyCollectionException;
+import no.hvl.dat102.exception.EmptyCollectionException;
 import no.hvl.dat102.adt.KoeADT;
 import no.hvl.dat102.kjedet.KjedetKoe;
 import no.hvl.dat102.tabell.SirkelKoe;

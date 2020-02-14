@@ -28,8 +28,8 @@ public class KjedetKoe<T> implements KoeADT<T> {
 		
 		
 		LinearNode<T> temp = new LinearNode<T>(element);
-		// Først skjekker v om koen er tom.
-		// Om den er tom skal både front og bak peke på nye elementet
+		// Fï¿½rst skjekker v om koen er tom.
+		// Om den er tom skal bï¿½de front og bak peke pï¿½ nye elementet
 			
 	
 		
@@ -78,7 +78,8 @@ public class KjedetKoe<T> implements KoeADT<T> {
 	}
 	@Override
 	public T peek() {
-	
+		if (isEmpty())
+			throw new EmptyCollectionException("Koe");
 		return front.getElement();
 	}
 	

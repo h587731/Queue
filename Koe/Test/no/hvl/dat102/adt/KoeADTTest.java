@@ -11,7 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
-import no.hvl.dat102.EmptyCollectionException;
+import no.hvl.dat102.exception.EmptyCollectionException;
 import no.hvl.dat102.adt.KoeADT;
 
 /**
@@ -115,17 +115,18 @@ public abstract class KoeADTTest {
 	}
 
 	/**
-	 * Test på at en stabel med noen elementer ikke er tom.
+	 * Test på at en koe med noen elementer ikke er tom.
 	 */
 	@Test
 	public final void erIkkeTom() {
+		assertTrue(koe.isEmpty());
 		koe.enQueue(e0);
 		koe.enQueue(e1);
 		assertFalse(koe.isEmpty());
 	}
 
 	/**
-	 * Test på at en stabel med null elementer er tom.
+	 * Test på at en koe  med null elementer er tom.
 	 */
 	@Test
 	public void enQueueDeQueueErTom() {

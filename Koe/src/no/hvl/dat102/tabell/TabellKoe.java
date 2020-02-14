@@ -1,5 +1,5 @@
 package no.hvl.dat102.tabell;
-import no.hvl.dat102.EmptyCollectionException;
+import no.hvl.dat102.exception.EmptyCollectionException;
 import no.hvl.dat102.adt.KoeADT;
 
 public class TabellKoe<T> implements KoeADT<T> {
@@ -60,6 +60,8 @@ public class TabellKoe<T> implements KoeADT<T> {
 
 	@Override
 	public T peek() {
+		if (isEmpty())
+			throw new EmptyCollectionException("Koe");
 		
 		return koe[0];
 	}

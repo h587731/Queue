@@ -1,6 +1,6 @@
 package no.hvl.dat102.tabell;
 import no.hvl.dat102.adt.KoeADT;
-import no.hvl.dat102.EmptyCollectionException;
+import no.hvl.dat102.exception.EmptyCollectionException;
 
 
 
