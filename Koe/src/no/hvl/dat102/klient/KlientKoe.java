@@ -4,21 +4,19 @@ import no.hvl.dat102.EmptyCollectionException;
 import no.hvl.dat102.adt.KoeADT;
 import no.hvl.dat102.kjedet.KjedetKoe;
 import no.hvl.dat102.tabell.SirkelKoe;
+import no.hvl.dat102.tabell.TabellKoe;
 
 public class KlientKoe {
 	public static void main(String[] args) {
 
-		String str = "Dette";
+		String str = "Dette er teksten";
 		int lengde = str.length();
-		KoeADT<Character> tegnKoe = new SirkelKoe<Character>(5);
+		KoeADT<Character> tegnKoe = new TabellKoe<Character>(5);
 		for (int i = 0; i < lengde; i++) {
 			tegnKoe.enQueue((str.charAt(i)));
 		}
 		
-		KoeADT<Character> test = new SirkelKoe<Character>(0);
 		
-		
-		int[] test2 = new int[0]; 
 
 		
 		try {

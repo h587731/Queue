@@ -11,7 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
-import no.hvl.dat102.exception.EmptyCollectionException;
+import no.hvl.dat102.EmptyCollectionException;
 import no.hvl.dat102.adt.KoeADT;
 
 /**

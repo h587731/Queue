@@ -1,7 +1,7 @@
 package no.hvl.dat102.tabell;
 import no.hvl.dat102.adt.KoeADT;
-import no.hvl.dat102.exception.EmptyCollectionException;
-import no.hvl.dat102.kjedet.LinearNode;
+import no.hvl.dat102.EmptyCollectionException;
+
 
 
 //********************************************************************
