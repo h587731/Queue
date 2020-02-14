@@ -17,14 +17,11 @@ public void enQueue (T element);
 public T deQueue();
 
 
-public T first();
+public T peek();
 
 
 public boolean isEmpty();
 
-
-
-public String toString();
 
   /**
    * Returnerer antall elementer på stabelen.
@@ -32,5 +29,7 @@ public String toString();
  */
 public int antall();
   
+
+
 }
 

@@ -30,7 +30,9 @@ public abstract class KoeADTTest {
 	private Integer e2 = 3;
 	private Integer e3 = 4;
 	private Integer e4 = 5;
-
+	
+	
+	
 	protected abstract KoeADT<Integer> reset();
 
 	/**
@@ -41,13 +43,14 @@ public abstract class KoeADTTest {
 	@BeforeEach
 	public void setup() {
 		koe = reset();
+
 	}
 
 	/**
 	 * Test på at en ny stabel er tom.
 	 */
 	@Test
-	public void nyStabelErTom() {
+	public void nyKoeErTom() {
 		assertTrue(koe.isEmpty());
 	}
 
@@ -55,7 +58,7 @@ public abstract class KoeADTTest {
 	 * Test opå push and pop.
 	 */
 	@Test
-	public void pushOgPop() {
+	public void enQueueOgDeQueue() {
 
 		koe.enQueue(e0);
 		koe.enQueue(e1);
@@ -68,7 +71,7 @@ public abstract class KoeADTTest {
 			assertEquals(e2, koe.deQueue());
 			assertEquals(e3, koe.deQueue());
 		} catch (EmptyCollectionException e) {
-			fail("pop feilet uventet " + e.getMessage());
+			fail("deQueuefeilet uventet " + e.getMessage());
 		}
 	}
 
@@ -76,7 +79,7 @@ public abstract class KoeADTTest {
 	 * Test på push og pop med duplikate verdier.
 	 */
 	@Test
-	public void pushOgPopMedDuplikater() {
+	public void enQueueOgdeQueueMedDuplikater() {
 
 		koe.enQueue(e0);
 		koe.enQueue(e1);
@@ -104,7 +107,7 @@ public abstract class KoeADTTest {
 			koe.enQueue(e3);
 			koe.enQueue(e4);
 			koe.deQueue();
-			assertEquals(e4, koe.first());
+			assertEquals(e4, koe.peek());
 
 		} catch (EmptyCollectionException e) {
 			fail("deQueue feilet uventet " + e.getMessage());
@@ -125,14 +128,14 @@ public abstract class KoeADTTest {
 	 * Test på at en stabel med null elementer er tom.
 	 */
 	@Test
-	public void pushPopErTom() {
+	public void enQueueDeQueueErTom() {
 		try {
 			koe.enQueue(e0);
 			koe.deQueue();
 			assertTrue(koe.isEmpty());
 
 		} catch (EmptyCollectionException e) {
-			fail("push eller pop feilet uventet " + e.getMessage());
+			fail("enQueue deQueue feilet uventet " + e.getMessage());
 		}
 	}
 
@@ -148,12 +151,12 @@ public abstract class KoeADTTest {
 	}
 
 	/**
-	 * Forsøk på pop av en tom stabel skal gi "underflow excepton" *
+	 * Forsøk på deQueue av en tom stabel skal gi "underflow excepton" *
 	 * 
 	 * @throws EmptyCollectionException expected exception
 	 */
 	@Test
-	public void popFromEmptyIsUnderflowed() {
+	public void deQueueFromEmptyIsUnderflowed() {
 		/*
 		 * Assertions.assertThrows(EmptyCollectionException.class, new Executable() {
 		 * 
