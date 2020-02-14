@@ -1,111 +1,78 @@
 package no.hvl.dat102.tabell;
+import no.hvl.dat102.EmptyCollectionException;
 import no.hvl.dat102.adt.KoeADT;
-import no.hvl.dat102.exception.EmptyCollectionException;
-import no.hvl.dat102.kjedet.LinearNode;
 
+public class TabellKoe<T> implements KoeADT<T> {
 
-//********************************************************************
-//
-//Representerer en samling kø, implementert vha en tabell.
-  // foran er i posisjon 0.
-//********************************************************************
+	private final static int STDK = 100;
+	private int bak;
+	private T[] koe;
 
-public class TabellKoe<T> implements KoeADT<T>{
- private final static int STDK = 100;
- private int bak, front, antall; 
- private T[] koe; 
+	public TabellKoe() {
+		this(STDK);
+	}
 
- /******************************************************************
-   Oppretter en tom kø med standard størrelse.
-   ******************************************************************/
- public TabellKoe()   {
-   this(STDK);     
- }
+	public TabellKoe(int startKapasitet) {
+		bak = 0;
+		koe = ((T[]) (new Object[startKapasitet]));
+	}
+     //...
 
- /******************************************************************
-   Oppretter en tom kø med kapasitet gitt ved parameter
- ******************************************************************/
- public TabellKoe (int startKapasitet){
-    bak = 0;     
-    koe = (T[])(new Object[startKapasitet]);
-    antall=0;
-  }
-
- 
- private boolean erFull() {
-	 
-	 if(bak+1%koe.length==front) {
-		 return true;
-	 }
-	 
-	 return false;
-	 
- }
- 
- 
- private void utvid() {
-	 T[]nyKoe = (T[])(new Object[koe.length*2+1]);
-	 for(int i = 0; i < koe.length; i++) {
-		 
-		 nyKoe[i] = koe[i];
-		 koe = nyKoe;
-	 }
-	 
-	 
- }
- 
-@Override
-public void enQueue(T element) {
-	
-	if(erFull()) {
-		utvid();
+	void utvid() {
+		
+		T[] nyKoe = ((T[]) (new Object[koe.length*2+1]));
+		for(int i = 0; i < koe.length ; i++) {
+			
+			nyKoe[i] = koe[i];
+		}
+	koe=nyKoe;
 	}
 	
-	// Er tom?
-	if(koe[front] == null ) {
-		koe[0] = element;
-		front = bak = 0;
+	@Override
+	public void enQueue(T element) {
+		
+		if(bak==koe.length) {
+			utvid();
+		}
+		
+		koe[bak] = element;
+		bak++;
+		
+		
 		
 	}
-	 bak = (bak + 1)% koe.length; 
-     koe[bak] = element; 
-     antall++; 
+
+	@Override
+	public T deQueue() {
+		
+		if(isEmpty()) {
+			throw new EmptyCollectionException("Koe");
+		}
+		
+		T temp = koe[0];
+		for(int i = 0; i < koe.length-1 ; i++) {
+			
+			koe[i] = koe[i+1]; 
+		}
+		bak--;
+		return temp;
+	}
+
+	@Override
+	public T peek() {
+		
+		return koe[0];
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return bak==0;
+	}
+
+	@Override
+	public int antall() {
+		return bak;
+	}
 	
-	// ny element
-	
-	
-	
-	
-	
-}
-
-@Override
-public T deQueue() {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-@Override
-public T first() {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-@Override
-public boolean isEmpty() {
-	// TODO Auto-generated method stub
-	return false;
-}
-
-@Override
-public int antall() {
-	// TODO Auto-generated method stub
-	return 0;
-}
-
- //....
- 
-}//class
-
-
+}// class
 

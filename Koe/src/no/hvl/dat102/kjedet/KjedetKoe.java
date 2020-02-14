@@ -77,7 +77,7 @@ public class KjedetKoe<T> implements KoeADT<T> {
 		return antall;
 	}
 	@Override
-	public T first() {
+	public T peek() {
 	
 		return front.getElement();
 	}

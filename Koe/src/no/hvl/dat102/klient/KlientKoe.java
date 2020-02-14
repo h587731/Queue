@@ -3,19 +3,24 @@ package no.hvl.dat102.klient;
 import no.hvl.dat102.EmptyCollectionException;
 import no.hvl.dat102.adt.KoeADT;
 import no.hvl.dat102.kjedet.KjedetKoe;
-import no.hvl.dat102.tabell.TabellKoe;
+import no.hvl.dat102.tabell.SirkelKoe;
 
 public class KlientKoe {
 	public static void main(String[] args) {
 
-		String str = "Dette er teksten";
+		String str = "Dette";
 		int lengde = str.length();
-		KoeADT<Character> tegnKoe = new KjedetKoe<Character>();
+		KoeADT<Character> tegnKoe = new SirkelKoe<Character>(5);
 		for (int i = 0; i < lengde; i++) {
 			tegnKoe.enQueue((str.charAt(i)));
 		}
 		
-		System.out.println(str);
+		KoeADT<Character> test = new SirkelKoe<Character>(0);
+		
+		
+		int[] test2 = new int[0]; 
+
+		
 		try {
 			while (!tegnKoe.isEmpty()) {
 				Character tegn = tegnKoe.deQueue();
